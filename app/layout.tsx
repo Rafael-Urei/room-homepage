@@ -24,6 +24,14 @@ export default function RootLayout({
       <body className={`${league_spartan.className} min-h-screen`}>
         <Header />
         {children}
+        <div className="text-center">
+          Challenge by{" "}
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+            Frontend Mentor
+          </a>
+          . Coded by{" "}
+          <a href="https://github.com/Rafael-Urei">Rafael de Souza</a>.
+        </div>
       </body>
     </html>
   );
