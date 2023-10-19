@@ -4,7 +4,5 @@
 
 :root {
   --dark-gray: hsl(0, 0%, 65%);
-  --black: hsl(0%, 0%, 0%);
-  --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
 }
