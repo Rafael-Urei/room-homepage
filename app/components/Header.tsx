@@ -1,28 +1,23 @@
+"use client";
+
 import Link from "next/link";
-import { Logo } from "./Icons";
+import { Hamburger, Logo } from "./Icons";
+import useWindow from "../hooks/useWindow";
+import Nav from "./Nav";
 
 export default function Header() {
+  const { width } = useWindow();
   return (
-    <header className="fixed w-full h-28 px-14 flex gap-8 items-center bg-black">
+    <header className="fixed w-full h-28 px-14 flex gap-8 items-center mobile:justify-center laptop:justify-start z-10">
+      {width < 680 && (
+        <button className="absolute left-[40px]">
+          <Hamburger />
+        </button>
+      )}
       <Link href="#header">
         <Logo />
       </Link>
-      <nav>
-        <ul className="flex gap-6 text-white">
-          <li>
-            <Link href="#">home</Link>
-          </li>
-          <li>
-            <Link href="#">shop</Link>
-          </li>
-          <li>
-            <Link href="#">about</Link>
-          </li>
-          <li>
-            <Link href="#">contact</Link>
-          </li>
-        </ul>
-      </nav>
+      <Nav />
     </header>
   );
 }

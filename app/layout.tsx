@@ -24,13 +24,16 @@ export default function RootLayout({
       <body className={`${league_spartan.className} min-h-screen`}>
         <Header />
         {children}
-        <div className="text-center">
+        <div className="text-center p-9 mobile:text-xs laptop:text-base">
           Challenge by{" "}
           <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
             Frontend Mentor
           </a>
           . Coded by{" "}
-          <a href="https://github.com/Rafael-Urei">Rafael de Souza</a>.
+          <a href="https://github.com/Rafael-Urei" target="_blank">
+            Rafael de Souza
+          </a>
+          .
         </div>
       </body>
     </html>
