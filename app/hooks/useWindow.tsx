@@ -16,7 +16,7 @@ export default function useWindow() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [window]);
 
   return { width };
 }

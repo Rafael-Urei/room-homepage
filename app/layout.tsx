@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, League_Spartan } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import MenuProvider from "./contexts/menuContext";
 
 const league_spartan = League_Spartan({
   subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${league_spartan.className} min-h-screen`}>
-        <Header />
-        {children}
+        <MenuProvider>
+          <Header />
+          {children}
+        </MenuProvider>
         <div className="text-center p-9 mobile:text-xs laptop:text-base">
           Challenge by{" "}
           <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
