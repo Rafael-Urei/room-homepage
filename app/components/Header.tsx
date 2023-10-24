@@ -12,7 +12,7 @@ export default function Header() {
   const { setIsOpen } = useContext(MenuContext);
   return (
     <header className="fixed w-full h-28 px-14 flex gap-8 items-center mobile:justify-center laptop:justify-start z-20">
-      {width < 680 && (
+      {width && width < 680 && (
         <button
           type="button"
           className="absolute left-[30px]"

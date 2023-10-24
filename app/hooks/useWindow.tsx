@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
 
 export default function useWindow() {
-  const [width, setWidth] = useState<any>();
+  const [width, setWidth] = useState<number | undefined>();
   useEffect(() => {
     if (typeof window === "undefined") return;
     setWidth(window.innerWidth);
