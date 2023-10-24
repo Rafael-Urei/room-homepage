@@ -72,7 +72,7 @@ export default function Home() {
         {currentPost.map((post: PostsTypes) => {
           return (
             <div key={post.id} className="flex mobile:flex-col laptop:flex-row">
-              {width > 680 ? (
+              {width && width > 680 ? (
                 <Suspense>
                   <motion.img
                     src={width > 680 ? post.image[0] : post.image[1]}
@@ -84,12 +84,14 @@ export default function Home() {
               ) : (
                 <div className="w-full relative">
                   <img
-                    src={width > 680 ? post.image[0] : post.image[1]}
+                    src={width && width > 680 ? post.image[0] : post.image[1]}
                     className="w-full"
                   />
                   <div
                     className={
-                      width > 680 ? "hidden" : "flex absolute bottom-0 right-0"
+                      width && width > 680
+                        ? "hidden"
+                        : "flex absolute bottom-0 right-0"
                     }
                   >
                     <button
@@ -136,7 +138,7 @@ export default function Home() {
                     </motion.div>
                   </Link>
                 </div>
-                <div className={width > 680 ? "flex" : "hidden"}>
+                <div className={width && width > 680 ? "flex" : "hidden"}>
                   <button
                     type="button"
                     className="flex items-center justify-center mobile:py-4 mobile:px-[30px] laptop:py-7 laptop:px-[33px] bg-black duration-200 hover:bg-very-dark-gray"
