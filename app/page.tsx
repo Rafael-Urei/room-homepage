@@ -79,7 +79,6 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                     variants={imageAnimation}
-                    className="standard:h-[700px]"
                   />
                 </Suspense>
               ) : (
