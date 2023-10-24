@@ -2,7 +2,7 @@
 
 import useSWR from "swr";
 import Loading from "./components/Loading";
-import { useContext, useState } from "react";
+import { Suspense, useContext, useState } from "react";
 import { AngleLeft, AngleRight, Arrow, Hamburger } from "./components/Icons";
 import Link from "next/link";
 import useWindow from "./hooks/useWindow";
@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   containerAnimation,
   imageAnimation,
+  invertedTextAnimation,
   textAnimation,
   titleAnimation,
 } from "./utils/animations";
@@ -72,12 +73,15 @@ export default function Home() {
           return (
             <div key={post.id} className="flex mobile:flex-col laptop:flex-row">
               {width > 680 ? (
-                <motion.img
-                  src={width > 680 ? post.image[0] : post.image[1]}
-                  initial="hidden"
-                  animate="visible"
-                  variants={imageAnimation}
-                />
+                <Suspense>
+                  <motion.img
+                    src={width > 680 ? post.image[0] : post.image[1]}
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageAnimation}
+                    className="standard:h-[700px]"
+                  />
+                </Suspense>
               ) : (
                 <div className="w-full relative">
                   <img
@@ -162,12 +166,18 @@ export default function Home() {
       >
         <img src={data.about.image[0]}></img>
         <div className="flex flex-col flex-1 p-9 desktop:px-16 standard:px-16 gap-3 standard:gap-6">
-          <h1 className="mobile:tracking-[.50em] mobile:text-xs laptop:tracking-[.20em] desktop:tracking-[.45em] standard:text-2xl font-bold">
+          <motion.h1
+            className="mobile:tracking-[.50em] mobile:text-xs laptop:tracking-[.20em] desktop:tracking-[.45em] standard:text-2xl font-bold"
+            variants={titleAnimation}
+          >
             {data.about.title.toUpperCase()}
-          </h1>
-          <p className="mobile:text-sm laptop:text-xs desktop:text-base standard:text-lg text-dark-gray">
+          </motion.h1>
+          <motion.p
+            className="mobile:text-sm laptop:text-xs desktop:text-base standard:text-lg text-dark-gray"
+            variants={invertedTextAnimation}
+          >
             {data.about.description}
-          </p>
+          </motion.p>
         </div>
         <img src={data.about.image[1]}></img>
       </motion.section>
